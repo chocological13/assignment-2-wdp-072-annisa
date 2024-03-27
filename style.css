@@ -75,11 +75,18 @@ body {
 .btn-submit {
     color: #FFEED6;
     background-color: #9B6A6C;
+    margin: 5px;
+    float: left;
 }
 
 .btn-submit:hover {
     color: #9B6A6C;
     background-color: #FFEED6;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
 }
 
 /* cards */

@@ -15,6 +15,9 @@ editButton.addEventListener('click', function() {
         input.removeAttribute('disabled');
     });
 
+    // Confirm dialog box
+    confirm("Please input your new data in the form.")
+
     // Populate form with existing data
     document.querySelector('#inputName').value = profileData.name.textContent;
     document.querySelector('#inputTitle').value = profileData.title.textContent;
@@ -26,15 +29,32 @@ editButton.addEventListener('click', function() {
 })
 
 // Get profile elements, use array and loop?
-    let profileData = {
-        name: document.querySelector('#yourName'),
-        title: document.querySelector('#title'),
-        availability: document.querySelector('#availability'),
-        age: document.querySelector('#age'),
-        location: document.querySelector('#location'),
-        exp: document.querySelector('#exp'),
-        email: document.querySelector('#email')
-    };
+let profileData = {
+    name: document.querySelector('#yourName'),
+    title: document.querySelector('#title'),
+    availability: document.querySelector('#availability'),
+    age: document.querySelector('#age'),
+    location: document.querySelector('#location'),
+    exp: document.querySelector('#exp'),
+    email: document.querySelector('#email')
+};
+
+// Store a copy of profile elements if user wants to reset it
+let initialData = {
+    name: document.querySelector('#yourName').textContent,
+    title: document.querySelector('#title').textContent,
+    availability: document.querySelector('#availability').textContent,
+    age: document.querySelector('#age').textContent,
+    location: document.querySelector('#location').textContent,
+    exp: document.querySelector('#exp').textContent,
+    email: document.querySelector('#email').textContent
+};
+
+function resetData() {
+    Object.keys(profileData).forEach(property => {
+        profileData[property].textContent = initialData[property];
+    });
+}
 
 // Get form elements
 const form = document.querySelector('form');
@@ -71,4 +91,17 @@ form.addEventListener('submit', function(event) {
         input.setAttribute('disabled', true);
     });
 
+    // Send a dialog box for confirmation
+    alert("Your data is changed!");
+
 });
+
+// function resetData() {
+//     profileData.name.value = initialData.name;
+//     profileData.title.value = initialData.title.value;
+//     profileData.availability.value = initialData.availability;
+//     profileData.age.value = initialData.age;
+//     profileData.location.value = initialData.location;
+//     profileData.exp.value = initialData.exp;
+//     profileData.email.value = initialData.email;
+// };
